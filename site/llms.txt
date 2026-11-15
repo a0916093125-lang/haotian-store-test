@@ -1,0 +1,16 @@
+# 皓天創新
+
+皓天創新是賣方。此站使用虛構資料與佔位範本。
+
+## 客服與政策
+
+- [皓天客服](https://test.ai888.tw/contact/)
+- [退換貨政策](https://test.ai888.tw/legal/returns/)
+- [隱私權](https://test.ai888.tw/legal/privacy/)
+- [服務條款](https://test.ai888.tw/legal/terms/)
+
+## 商家分頁
+
+- [示範烘焙坊 A（虛構）](https://test.ai888.tw/fixture_merchant_a/)
+- [示範食材坊 B（虛構）](https://test.ai888.tw/fixture_merchant_b/)
+- [示範冷凍坊 C（虛構）](https://test.ai888.tw/fixture_merchant_c/)
