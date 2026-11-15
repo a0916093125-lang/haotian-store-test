@@ -59,11 +59,14 @@ def check(directory):
     blobs = {p.relative_to(root).as_posix(): p.read_bytes() for p in paths if p.is_file()}
     need('publish_manifest.json' in blobs and 'fixture_inventory.json' in blobs, '缺少發布紀錄或虛構身分清單。')
     manifest = json.loads(blobs['publish_manifest.json'])
-    need(set(manifest) == {'files', 'generator_commit', 'template_version', 'fixtures_check', 'env', 'generator_source_sha256'}, '發布紀錄欄位不符。')
+    need(set(manifest) == {'files', 'generator_commit', 'template_version', 'fixtures_check', 'env', 'generator_source_sha256', 'test_site_base_url'}, '發布紀錄欄位不符。')
     need(manifest['env'] == 'test' and manifest['fixtures_check'] == 'passed'
          and re.fullmatch(r'[0-9a-f]{40}', manifest['generator_commit'])
          and re.fullmatch(r'[0-9a-f]{64}', manifest['generator_source_sha256'])
          and re.fullmatch(r'[a-z][a-z0-9_]{0,63}', manifest['template_version']), '發布紀錄無效。')
+    need(isinstance(manifest['test_site_base_url'], str)
+         and re.fullmatch(r'https://[a-z0-9]+(?:[.-][a-z0-9]+)*(?:/[a-z0-9_-]+)*', manifest['test_site_base_url']),
+         '測試站基底網址無效。')
     need(set(blobs) == set(manifest['files']) | {'publish_manifest.json'}, '發布檔案清單不符。')
     for name, digest in manifest['files'].items():
         need(re.fullmatch(r'[0-9a-f]{64}', digest) and hashlib.sha256(blobs[name]).hexdigest() == digest, '發布產物摘要不符。')
@@ -87,7 +90,8 @@ def check(directory):
     sensitive = re.compile(r'\b(?:sk_|gh[pousr]_)[A-Za-z0-9_-]{20,}|\bAKIA[A-Z0-9]{16}\b|-----BEGIN [A-Z ]*PRIVATE KEY-----|\beyJ[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}|(?:api[_-]?key|access[_-]?token|secret)\s*[=:]\s*["\x27]?[A-Za-z0-9_/-]{20,}', re.I)
     email = re.compile(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}')
     phone = re.compile(r'(?<![A-Za-z0-9])(?:\+886|0[2-9])(?:[ _-]*[0-9]){7,9}(?![A-Za-z0-9])')
-    addresses = re.compile(r'[\u4e00-\u9fff]{2,}(?:市|縣)(?:[\u4e00-\u9fff]+(?:區|鄉|鎮|市))?[\u4e00-\u9fff0-9]+(?:路|街)(?:[一二三四五六七八九十百0-9]+段)?')
+    addresses = re.compile(r'[\u4e00-\u9fff]{2,}(?:市|縣|區|鄉|鎮)[\u4e00-\u9fff0-9０-９]+(?:大道|路|街|巷|弄|段|村|里)')
+    need('index.html' in blobs and '404.html' in blobs, '缺少根首頁或找不到頁面的備援頁。')
     html_count = 0
     known_digests = set(manifest['files'].values()) | {manifest['generator_commit']}
     for name, blob in blobs.items():
@@ -98,7 +102,7 @@ def check(directory):
         for digest in known_digests:
             scrubbed = scrubbed.replace(digest, '')
         scrubbed = re.sub(r'catalog_[a-f0-9]{64}', '', scrubbed)
-        need(not addresses.search(scrubbed), '疑似路段地址，待查；禁止輸出或打包。')
+        need(not addresses.search(scrubbed), 'ADDRESS_REVIEW_REQUIRED：疑似路段地址，待查；禁止輸出或打包。')
         need(not email.search(scrubbed) and not phone.search(scrubbed), '出現非虛構聯絡資料。')
         need(not re.search(r'tel:|mailto:|\bBuyAction\b|\bPayAction\b|\bCheckoutAction\b', text, re.I), '測試站含聯絡或付款標記。')
         if name.endswith('.json'):
@@ -131,6 +135,18 @@ def check(directory):
         robots = [n for n in doc.nodes if n['tag'] == 'meta' and n['attrs'].get('name') == 'robots']
         need(len(robots) == 1 and robots[0]['attrs'].get('content') == 'noindex, nofollow'
              and any(p['tag'] == 'head' for p in robots[0]['parents']), '測試頁缺少禁止索引標記。')
+        if name == 'index.html':
+            canonical = [n for n in doc.nodes if n['tag'] == 'link' and n['attrs'].get('rel') == 'canonical']
+            need(len(canonical) == 1 and canonical[0]['attrs'].get('href') == manifest['test_site_base_url'] + '/'
+                 and any(p['tag'] == 'head' for p in canonical[0]['parents']), '根首頁標準網址與測試站設定不符。')
+            listed = {slug: title for slug, title in merchants.items() if slug + '/index.html' in blobs}
+            links = [(n['attrs'].get('data-merchant-link'), n['attrs'].get('href'), n['text'])
+                     for n in doc.nodes if n['tag'] == 'a']
+            need(all(isinstance(value, str) for link in links for value in link)
+                 and sorted(links) == sorted((slug, '/' + slug + '/', title) for slug, title in listed.items()),
+                 '根首頁商家連結或虛構名稱不符。')
+            main = [n['text'] for n in doc.nodes if n['tag'] == 'main']
+            need(main == ['虛構商家導覽' + ''.join(title for _, _, title in links)], '根首頁只能提供虛構商家導覽。')
         first = doc.first_element
         need(first is not None and first['attrs'].get('class') == 'test-banner'
              and first['text'] == '測試站，不受理訂單', '測試橫幅缺少或不在最上方。')
