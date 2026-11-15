@@ -1,0 +1,223 @@
+{
+  "ucp_version": "1.0",
+  "merchant": {
+    "id": "tw-bade82-agushop",
+    "brand_name": "阿姑的店 AGU 3C 職人貼膜・防護專門店（台北八德光華店）",
+    "place_id": "ChIJsTzu38ypQjQRjQnAIykkEeM",
+    "google_maps_cid": "0x3442a9ccdfee3cb1:0xe311242923c0098d",
+    "address": "100臺北市中正區梅花里八德路一段82巷5號",
+    "coordinates": {
+      "lat": 25.0436932,
+      "lng": 121.5318192
+    },
+    "district_context": "光華數位新天地／三創生活園區／捷運忠孝新生站 1 號出口八德路 82 巷商圈",
+    "opening_hours": "週一至週日 11:30–21:00（線上預約優先服務）",
+    "service_guarantees": [
+      "全店公開三階透明標價（NT$390 標準／NT$690 防窺抗藍光／NT$980 頂規二次強化金剛貼）",
+      "30 天碎邊／破膜免費換新電子門市服務盾（徹底解決傳統巷口貼膜店品質爭議）",
+      "全家 10 隻手機殼＋1 隻平板殼跨型號混搭 74 折家庭團購方案",
+      "無塵室正壓除塵艙與雷射對位治具免費現場代貼"
+    ]
+  },
+  "commerce_operator": {
+    "platform_partner": "數位展示架構工坊 (Digital Demo Architecture)",
+    "checkout_mode": "ONLINE_PRICE_LOCK_AND_O2O_WARRANTY_ESCROW",
+    "free_shipping_threshold_taiwan_twd": 1000,
+    "store_pickup_fee_twd": 0,
+    "warranty_days": 30
+  },
+  "shipping_rules": [
+    {
+      "id": "bade_pickup",
+      "label": "八德路一段 82 巷 5 號門市快取／現場無塵室免費代貼（免運費）",
+      "threshold": 0,
+      "fee": 0,
+      "intl": false,
+      "eta": "線上預約時段，到店 15 分鐘內完成無塵貼膜與取件"
+    },
+    {
+      "id": "cvs",
+      "label": "超商取貨（7-11／全家，附 DIY 無塵貼膜神器盒）",
+      "threshold": 1000,
+      "fee": 60,
+      "intl": false,
+      "eta": "滿 NT$1,000 免運，現貨 24 小時內寄出（約 2–3 天到店）"
+    },
+    {
+      "id": "tw_home",
+      "label": "台灣本島宅配（示範展間／順豐防撞盒裝寄送）",
+      "threshold": 1000,
+      "fee": 90,
+      "intl": false,
+      "eta": "滿 NT$1,000 免運，出貨後約 1–2 個工作天送達"
+    },
+    {
+      "id": "corp_batch",
+      "label": "大台北企業公務機／學校機關專人到府收送貼膜（滿 10 台起）",
+      "threshold": 4000,
+      "fee": 150,
+      "intl": false,
+      "eta": "滿 NT$4,000 免收外勤車馬費，支援開立報帳憑證"
+    }
+  ],
+  "service_tracks": [
+    {
+      "id": "personal_pickup",
+      "label": "個人／學生線上透明估價・預約八德 82 巷門市現場貼膜（含 30 天門市服務）",
+      "ext": "八德 82 巷 5 號一號無塵工作台",
+      "email": "（示範介面不顯示示範模式說明）"
+    },
+    {
+      "id": "family_10case",
+      "label": "家庭多機團購專案（如：10 隻手機殼＋1 隻平板殼跨機型混搭 74 折）",
+      "ext": "阿姑店長熟客示範模式說明櫃台",
+      "email": "（示範介面不顯示示範模式說明）"
+    },
+    {
+      "id": "warranty_claim",
+      "label": "30 天碎邊／破膜免費換新門市服務與爭議優先處理通道",
+      "ext": "數位展示架構監理門市服務專責組",
+      "email": "（示範介面不顯示示範模式說明）"
+    },
+    {
+      "id": "corp_b2b",
+      "label": "企業公務機／北科大實驗室／補習班平板大宗採購與防窺膜專案",
+      "ext": "B2B 企業商務示範模式說明",
+      "email": "（示範介面不顯示示範模式說明）"
+    }
+  ],
+  "catalog": [
+    {
+      "sku": "AGU-01",
+      "name": "【頂規金剛滿版】二次強化 9H 鑽石級抗摔玻璃保護貼（含 30 天破膜免費換新門市服務）",
+      "category": "9H 金剛保護貼與滿版貼膜",
+      "material": "日本 AGC 高鋁玻璃 × 台灣特殊光學膠 × 115° 電鍍奈米疏油層",
+      "specification": "公開透明 5 層結構與 64g 鋼球落錘實測！到店無塵室免費代貼，享 30 天內碎邊或破膜免費換新 1 次門市服務",
+      "price_twd": 980,
+      "list_price_twd": 1200,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-02",
+      "name": "【28° 雙向防窺／抗藍光】標準製程批次管理 護眼防窺 9H 滿版鋼化玻璃貼（含雷射對位代貼）",
+      "category": "9H 金剛保護貼與滿版貼膜",
+      "material": "LG 光學防窺百葉塗層 × 抗藍光濾光基材 × 二次強化導角邊",
+      "specification": "正面高透不暈眩、左右 28° 物理防偷窺，完美支援 Face ID 與螢幕下指紋秒解，附 30 天門市服務",
+      "price_twd": 690,
+      "list_price_twd": 890,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-03",
+      "name": "【大曲面／旗艦專用】UV 光學全膠貼合滿版鋼化膜（含無塵 UV 固膠工藝）",
+      "category": "9H 金剛保護貼與滿版貼膜",
+      "material": "台灣大廠特殊光學膠 × 全透明無黑邊曲面鋼化玻璃",
+      "specification": "專治大曲面螢幕邊緣翹起與觸控不靈敏！不擋邊遮字、微刮痕光學填補，支援超聲波指紋秒解",
+      "price_twd": 850,
+      "list_price_twd": 1080,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-04",
+      "name": "【小資透明標準版】高清高透 9H 滿版鋼化玻璃保護貼（含到店專業除塵代貼）",
+      "category": "9H 金剛保護貼與滿版貼膜",
+      "material": "高透光 9H 鋼化玻璃 × 真空疏水疏油塗層",
+      "specification": "公開透明入門價！北科大學生與八德商圈上班族日常換膜首選，連工帶料現場 10 分鐘快速完工",
+      "price_twd": 390,
+      "list_price_twd": 490,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-05",
+      "name": "【MagSafe 氣囊防摔】四角隱形氣囊抗黃透明磁吸防摔手機殼（全機型現貨）",
+      "category": "軍規防摔手機殼系列",
+      "material": "德國拜耳抗黃 TPU 減震邊框 ＋ 高透抗刮 PC 背板 ＋ N52 強磁環",
+      "specification": "四角雙重氣囊結構通過 2.4 公尺防摔測試，精準內縮不頂滿版保護貼，還原裸機原色",
+      "price_twd": 590,
+      "list_price_twd": 750,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-06",
+      "name": "【軍規極盾防摔】霧面防指紋 MagSafe 雙料複合軍規防摔殼（附金屬獨立按鍵）",
+      "category": "軍規防摔手機殼系列",
+      "material": "內層蜂巢緩震結構 ＋ 親膚霧面抗指紋背板 ＋ 鋁合金按鍵",
+      "specification": "鏡頭框與螢幕邊緣加高 1.5mm，提供曜石黑、原色鈦灰、暗夜綠、深海藍四色，手感俐落不沾油汙",
+      "price_twd": 790,
+      "list_price_twd": 980,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-07",
+      "name": "【孝親商務首選】經典磁扣翻蓋防摔皮套手機殼（內建悠遊卡槽＋追劇立架）",
+      "category": "軍規防摔手機殼系列",
+      "material": "耐磨防潑水十字紋 PU 皮革 ＋ 柔軟 TPU 全包覆防摔內殼",
+      "specification": "360 度全機前後完整包覆不怕鑰匙刮傷，內置雙卡槽與鈔票夾層，長輩與業務拜訪最實用",
+      "price_twd": 490,
+      "list_price_twd": 650,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-08",
+      "name": "【熟客激推平板套】iPad 磁吸三折筆槽氣囊防彎保護套（適用 iPad 全系列）",
+      "category": "iPad 平板套與藍寶石鏡頭貼",
+      "material": "高韌性防彎亞克力背板 ＋ 蜂巢散熱導槽 ＋ 智能磁吸休眠上蓋",
+      "specification": "支援 Apple Pencil 磁吸充電與收納，30° 繪圖打字與 65° 影音追劇雙角度穩固支撐",
+      "price_twd": 680,
+      "list_price_twd": 880,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-09",
+      "name": "【iPad 繪圖寫字】日本肯特紙感類紙膜／9H 高清平板玻璃貼（含無塵代貼）",
+      "category": "iPad 平板套與藍寶石鏡頭貼",
+      "material": "日本進口肯特紙紋理基材 ／ 9H 抗指紋鋼化玻璃（二選一）",
+      "specification": "專為筆記與電繪設計，筆尖阻尼感自然不打滑、抗眩光不傷眼；亦可任選高清 9H 玻璃貼",
+      "price_twd": 650,
+      "list_price_twd": 850,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-10",
+      "name": "【藍寶石光學防護】AR 抗反射鍍膜金屬框單顆獨立鏡頭保護貼（一組 3 顆入）",
+      "category": "iPad 平板套與藍寶石鏡頭貼",
+      "material": "高硬度光學玻璃 ＋ AR 抗反射增透鍍膜 ＋ 航太鋁合金原機色邊框",
+      "specification": "99% 原機透光率、開閃光燈夜拍零白霧眩光，搭配保護殼完全不卡框，湊滿千元免運首選",
+      "price_twd": 450,
+      "list_price_twd": 590,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-11",
+      "name": "【雙機新機全配免運組】頂規金剛滿版貼 × 2 ＋ MagSafe 防摔殼 × 2（含雙機 30 天門市服務）",
+      "category": "家庭十機與企業團購特惠組",
+      "material": "頂規二次強化金剛貼 × 2 片 ＋ MagSafe 氣囊／極盾防摔殼 × 2 個",
+      "specification": "夫妻情侶換新機一次到位！單組現省 NT$800 並直接享台灣免運與雙機 30 天破膜免費換新門市服務",
+      "price_twd": 2680,
+      "list_price_twd": 3480,
+      "warranty_30d_included": true,
+      "in_stock": true
+    },
+    {
+      "sku": "AGU-12",
+      "name": "【八德熟客鎮店組】全家 10 隻手機殼 ＋ 1 隻 iPad 平板殼大滿貫家庭包（74 折特惠）",
+      "category": "家庭十機與企業團購特惠組",
+      "material": "任選型號防摔手機殼 × 10 個 ＋ iPad 三折氣囊保護套 × 1 個",
+      "specification": "源自 Google 評論真實熟客口碑『我們家的十隻手機殼、一隻平板殼都在這裡買』！跨型號任選現省 NT$1,700",
+      "price_twd": 4880,
+      "list_price_twd": 6580,
+      "warranty_30d_included": true,
+      "in_stock": true
+    }
+  ]
+}
