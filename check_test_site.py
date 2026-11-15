@@ -56,7 +56,9 @@ def check(directory):
     need(root.is_dir() and not root.is_symlink(), '找不到測試站目錄。')
     paths = list(root.rglob('*'))
     need(not any(path.is_symlink() for path in paths), '測試站不可含符號連結。')
-    blobs = {p.relative_to(root).as_posix(): p.read_bytes() for p in paths if p.is_file()}
+    # site/agushop 是另行放入的靜態示範站，不屬於虛構測試站發布清單。
+    blobs = {p.relative_to(root).as_posix(): p.read_bytes() for p in paths
+             if p.is_file() and 'agushop' not in p.relative_to(root).parts}
     need('publish_manifest.json' in blobs and 'fixture_inventory.json' in blobs, '缺少發布紀錄或虛構身分清單。')
     manifest = json.loads(blobs['publish_manifest.json'])
     need(set(manifest) == {'files', 'generator_commit', 'template_version', 'fixtures_check', 'env', 'generator_source_sha256', 'test_site_base_url'}, '發布紀錄欄位不符。')
